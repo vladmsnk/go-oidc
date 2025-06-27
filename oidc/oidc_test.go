@@ -701,6 +701,7 @@ func TestVerifierAlg(t *testing.T) {
 		},
 	}
 	srv := httptest.NewServer(ts)
+	defer srv.Close()
 	ts.baseURL = srv.URL
 
 	ctx := context.Background()
@@ -782,6 +783,7 @@ func TestCanceledContext(t *testing.T) {
 		},
 	}
 	srv := httptest.NewServer(ts)
+	defer srv.Close()
 	ts.baseURL = srv.URL
 
 	ctx, cancel := context.WithCancel(context.Background())
